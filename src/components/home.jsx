@@ -2,12 +2,15 @@ import { Button, Carousel } from "@material-tailwind/react";
 import { useEffect, useState } from 'react';
 import CountdownTimer from "./counterTimer";
 import { useDispatch } from "react-redux";
+import { addFevAsync } from "./homeSlice";
+import { useNavigate } from "react-router-dom";
 export function Home() {
 
     const [isToggled, setIsToggled] = useState(false);
+    const navigate = useNavigate()
     const targetDate = new Date('2024-12-31T00:00:00');
     const [selectedIndex, setSelectedIndex] = useState(null);
-    const [id,myId]=useState();
+    const [id, myId] = useState();
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -15,12 +18,21 @@ export function Home() {
         if (data) {
             myId(data.id)
         }
-    })
+    }, [])
 
-    
+    const hadleAddFev = (itemID) => {
+        if (id) {
+            const data = { [itemID]: { /* Include relevant item data here */ } };
+            dispatch(addFevAsync({ id, item: data }));
+        }
+
+    }
 
     const handleClick = (index) => {
         setSelectedIndex(index);
+        navigate('/fev')
+        hadleAddFev(index)
+
     };
     const handleToggle = () => {
         setIsToggled((prev) => !prev);
@@ -231,6 +243,7 @@ export function Home() {
                             <div className=" text-white text-sm  rounded-xl text-center p-1 font-bold flex justify-between  ">
                                 <p className="cursor-pointer" onClick={() => handleClick(index)}>
                                     <img
+
                                         src={selectedIndex === index
                                             ? "https://cdn-icons-png.flaticon.com/512/1216/1216686.png"
                                             : "https://cdn-icons-png.flaticon.com/512/1077/1077035.png"}

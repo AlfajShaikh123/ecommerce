@@ -10,7 +10,7 @@ export function Footer() {
     return (<>
 
         <div className="mt-10 bg-black">
-            <div className="md:flex md:justify-around justify-between grid grid-flow-row grid-cols-2  text-justify gap-10  text-white p-5">
+            <div className="md:flex md:justify-around justify-between grid grid-flow-row grid-cols-2  text-justify gap-14  text-white p-5">
 
                 <div className="space-y-3 text-sm">
                     <p className="font-bold text-xl">Exclusive</p>
@@ -23,7 +23,7 @@ export function Footer() {
                             label="Enter Your Email"
                             className="pr-20"
                             containerProps={{
-                                className: "min-w-[100px] min-h-[5px]",
+                                className: "md:min-w-[100px] min-w-[150px] min-h-[5px]",
                             }}
                         />
                         {/* className="!absolute right-1 top-1 rounded" */}

@@ -22,7 +22,7 @@ export function Header() {
     const [openNav, setOpenNav] = React.useState(false);
 
     const [value, setVal] = useState('No user');
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('user'));
@@ -38,8 +38,8 @@ export function Header() {
         window.location.reload()
     })
 
-    const handleLogin=(()=>{
-       navigate('/signup/login')
+    const handleLogin = (() => {
+        navigate('/signup/login')
     })
 
 
@@ -75,16 +75,18 @@ export function Header() {
                     Contact
                 </a>
             </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-bold"
-            >
-                <a href="#" className="flex items-center">
-                    About
-                </a>
-            </Typography>
+            <NavLink to={'about'}>
+                <Typography
+                    as="li"
+                    variant="small"
+                    color="blue-gray"
+                    className="p-1 font-bold"
+                >
+                    <a href="#" className="flex items-center">
+                        About
+                    </a>
+                </Typography>
+            </NavLink>
             <NavLink to={'signup'}>
                 <Typography
                     as="li"
@@ -118,12 +120,16 @@ export function Header() {
             </div>
 
             <div className="flex items-center gap-4">
-                <Badge color="red" content='5'>
+                <Badge color="red" content='4'>
                     <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="" className="h-7" />
                 </Badge>
 
-                <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="" className="h-7" />
+                <NavLink to={'cart'}>
+                    <Badge color="red" content='2'>
+                        <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="" className="h-7" />
+                    </Badge>
 
+                </NavLink>
                 <Menu>
                     <MenuHandler>
                         <div className="flex items-center gap-2 cursor-pointer">
